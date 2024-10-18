@@ -1,13 +1,11 @@
 FROM ubuntu:latest
 
-# Install dependencies
-RUN  apt-get update && apt-get install -y \
+# Install dependencies using apt, including PyYAML
+RUN apt-get update && apt-get install -y \
     python3.10 \
     python3-pip \
-    git
-
-# Install Python package
-RUN pip3 install PyYAML
+    git \
+    python3-yaml
 
 COPY feed.py /usr/bin/feed.py
 COPY entrypoint.sh /entrypoint.sh
